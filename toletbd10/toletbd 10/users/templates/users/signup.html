@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+ToLetBD | Sing Up Page
+{% endblock title %} 
+
+{% block content %}
+<section class="l-area bg-light py-5">
+  <div class="container py-3">
+    <div class="login-wrapper">
+      <div class="login-wrapper-flex">
+        <div class="login-wrapper-contents login-padding shadow rounded bg-white">
+          <h3 class="single-title text-center">Welcome to Registrations Form :)</h3>
+          <hr>
+          <form class="login-wrapper-form custom-form padding-top-20" action="" method="post" onsubmit="return validatePassword()" novalidate>
+            {% csrf_token %}
+            <div class="single-input mt-4">
+              <label class="label-title mb-2">Email Address</label>
+              <input class="form--control border-dark rounded" type="email" name="email" placeholder="Email here" />
+            </div>
+            <div class="single-input mt-4">
+              <label class="label-title mb-2"> Create Password </label>
+              <input class="form--control border-dark rounded" type="password" name="password1" id="password1" placeholder="Type Password" />
+              <div class="icon toggle-password">
+                <div class="show-icon">
+                  <i class="las la-eye-slash"></i>
+                </div>
+                <span class="hide-icon">
+                  <i class="las la-eye"></i>
+                </span>
+              </div>
+            </div>
+            <div class="single-input mt-4">
+              <label class="label-title mb-2"> Confirm Password </label>
+              <input class="form--control border-dark rounded" type="password" name="password2" id="password2" placeholder="Confirm Password" />
+              <div class="icon toggle-password">
+                <div class="show-icon">
+                  <i class="las la-eye-slash"></i>
+                </div>
+                <span class="hide-icon">
+                  <i class="las la-eye"></i>
+                </span>
+              </div>
+            </div>
+            <div class="checkbox-inline mt-4">
+              <input class="check-input" type="checkbox" id="check15" name="agree" />
+              <label class="checkbox-label" for="check15">
+                By creating an account, you agree to the
+                <a class="color-one" href="/terms/">
+                  terms of service
+                </a>
+                and
+                <a class="color-one" href="/terms/">
+                  Conditions
+                </a>, and
+                <a class="color-one" href="/privacy/">
+                  privacy policy
+                </a>
+              </label>
+            </div>
+            <button class="submit-btn w-100 mt-4 rounded" type="submit">
+              Sign Up Now
+            </button>
+            <span class="account color-light mt-3">
+              Already have an account?
+              <a class="color-one" href="{% url 'signin' %}"> Login </a>
+            </span>
+          </form>
+          
+          <script>
+            function validatePassword() {
+              var password1 = document.getElementById("password1").value;
+              var password2 = document.getElementById("password2").value;
+              var passwordPattern = /^(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/; // At least 8 characters with at least one special character
+            
+              if (!passwordPattern.test(password1) || password1 !== password2) {
+                alert("Password must be at least 8 characters long and contain at least one special character. Make sure the passwords match.");
+                return false; // Prevent form submission
+              }
+            
+              return true; // Allow form submission
+            }
+          </script>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+{% block dhead %}
+{% endblock dhead %}
+<div class="body-overlay"></div>
+<div class="dashboard-area section-bg-2 dashboard-padding">
+  <div class="container">
+    <div class="dashboard-contents-wrapper">
+      <div class="dashboard-icon">
+        <div class="sidebar-icon">
+          <i class="las la-bars"></i>
+        </div>
+      </div>
+      <div class="dashboard-left-content">
+        <div class="dashboard-close-main">
+          <div class="close-bars"><i class="las la-times"></i></div>
+          <div class="dashboard-bottom">
+            <ul class="dashboard-list list-style-none">
+              <li class="list {% block dd %}{% endblock dd %}">
+                <a href="/user-dashboard/">
+                  <i class="las la-briefcase"></i> Dashboard
+                </a>
+              </li>
+              {% comment %} <li class="list {% block dc %}{% endblock dc %}">
+                <a href="/user-dashboard/user-cancellation/">
+                  <i class="las la-times-circle"></i> Cancellation & Refund
+                </a>
+              </li> {% endcomment %}
+              <li class="list {% block dri %}{% endblock dri %}">
+                <a href="/user-dashboard/user-report/">
+                  <i class="las la-exclamation-triangle"></i> Report an issue
+                  <span class="badge-notification"> 12 </span>
+                </a>
+              </li>
+              <li class="list {% block dpm %}{% endblock dpm %} has-children">
+                <a href="javascript:void(0)">
+                  <i class="las la-user-circle"></i> Profile
+                </a>
+                <ul class="submenu list-style-none">
+                  <li class="list {% block dp %}{% endblock dp %}">
+                    <a href="/user-dashboard/user-profile/"> Profile </a>
+                  </li>
+                  <li class="list {% block dep %}{% endblock dep %}">
+                    <a href="/user-dashboard/user-edit-profile/">
+                      Edit Profile
+                    </a>
+                  </li>
+                  <li class="list {% block dpc %}{% endblock dpc %}">
+                    <a href="/user-dashboard/user-pass-change/">
+                      Password Change
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="list {% block dsm %}{% endblock dsm %} has-children">
+                <a href="javascript:void(0)">
+                  <i class="las la-headset"></i> Support
+                </a>
+                <ul class="submenu list-style-none">
+                  <li class="list {% block ds %}{% endblock ds %}">
+                    <a href="/user-dashboard/user-support/"> Support </a>
+                  </li>
+                  {% comment %} <li class="list {% block dt %}{% endblock dt %}">
+                    <a href="/user-dashboard/user-tickets/"> Tickets </a>
+                  </li> {% endcomment %}
+                  <li class="list {% block dat %}{% endblock dat %}">
+                    <a href="/user-dashboard/add-tickets/">
+                      Add Tickets
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="list">
+                <a href="/logout/">
+                  <i class="las la-sign-out-alt"></i> Log Out
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+{% block dcontent %}
+{% endblock dcontent %}
+
+
+{% endblock content %}
+  

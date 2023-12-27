@@ -1,0 +1,528 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+ToLetBD | Home
+{% endblock title %}
+
+{% block content %}
+<div class="banner-area banner-area-one">
+  <div class="container-fluid p-0">
+    {% if maincontent %}
+      <div class="row align-items-center flex-column-reverse flex-lg-row">
+        <div class="col-lg-6">
+          <div class="banner-single banner-single-one percent-padding">
+            <div class="banner-single-content">
+              <h2 class="banner-single-content-title fw-700">
+                {{ maincontent.0.heading }}
+              </h2>
+              <p class="banner-single-content-para mt-3">
+                {{ maincontent.0.paragraph }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          {% if maincontent.0.image != Null %}
+          <img src="{{ maincontent.0.image.url }}" alt="mainimage" class="img-fluid radius-20">
+          {% endif %}
+        </div>
+      </div>
+    {% else %}
+      <h4 class="text-center text-muted">No data available yet!</h4>
+    {% endif %}
+  </div>
+</div>
+
+<section class="attraction-area pat-50 pab-50">
+  <div class="container">
+    <div class="section-title text-left append-flex">
+      <h2 class="title">Our Property Types</h2>
+      <div class="append-attraction"></div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-12">
+        <div class="global-slick-init attraction-slider nav-style-one slider-inner-margin"
+          data-appendArrows=".append-attraction" data-infinite="true" data-arrows="true" data-dots="false"
+          data-slidesToShow="4" data-swipeToSlide="true" data-autoplay="true" data-autoplaySpeed="2500"
+          data-prevArrow='<div class="prev-icon"><i class="las la-angle-left"></i></div>'
+          data-nextArrow='<div class="next-icon"><i class="las la-angle-right"></i></div>'
+          data-responsive='[{"breakpoint": 1400,"settings": {"slidesToShow": 4}},{"breakpoint": 1200,"settings": {"slidesToShow": 3}},{"breakpoint": 992,"settings": {"slidesToShow": 2}},{"breakpoint": 480, "settings": {"slidesToShow": 1} }]'>
+
+          {% for b in our_property %}
+            <div class="attraction-item">
+              <div class="single-attraction radius-20">
+                <div class="single-attraction-thumb">
+                  <a href="javascript:void(0)">
+                    <img src="{{ b.image.url }}" alt="img" style="height: 250px; width: 100%;"/>
+                  </a>
+                </div>
+                <div class="single-attraction-contents">
+                  <h4 class="single-attraction-contents-title">
+                    <a href="javascript:void(0)"> {{ b.heading }}</a>
+                  </h4>
+                  <p class="single-attraction-contents-para">
+                    {{ b.para }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          {% empty %}
+            <h4 class="text-secondary">No data available now.</h4>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="booking-area pat-100 pab-50">
+  <div class="container">
+    <div class="section-title center-text">
+      <h2 class="title">Why book from ToLetBD?</h2>
+      <div class="section-title-shapes"></div>
+    </div>
+    <div class="row gy-4 mt-5">
+      {% for c in why_book %}
+        <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInRight" data-wow-delay=".2s">
+          <div class="single-why center-text bg-white single-why-border radius-10">
+            <div class="single-why-icon">
+              <img src="{{ c.image.url }}" alt="icon" style="height: 40px; width: 40px;"/>
+            </div>
+            <div class="single-why-contents mt-3">
+              <h4 class="single-why-contents-title">
+                <a href="javascript:void(0)">{{ c.heading }}</a>
+              </h4>
+              <p class="single-why-contents-para mt-3">
+                {{ c.para }}
+              </p>
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <h4 class="text-secondary">No data available now.</h4>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="guest-area pat-50 pab-50">
+  <div class="container">
+    <div class="section-title center-text">
+      <h2 class="title">What our guests think</h2>
+      <div class="section-title-shapes"></div>
+    </div>
+    <div class="custom-tab guest-wrapper mt-5">
+      <div class="guest-wrapper-shapes">
+        <img src="{% static 'assets/img/guest/guest-shape.png' %}" alt="" />
+      </div>
+      {% if guest %}
+        <div class="custom-tab-menu">
+          <ul class="tab-menu guest-wrapper-images list-style-none">
+            <li class="guest-wrapper-images-single active">
+              <img src="{{ guest.0.image.url }}" alt="" />
+            </li>
+            <li class="guest-wrapper-images-single">
+              <img src="{{ guest.1.image.url }}" alt="" />
+            </li>
+            <li class="guest-wrapper-images-single">
+              <img src="{{ guest.2.image.url }}" alt="" />
+            </li>
+            <li class="guest-wrapper-images-single">
+              <img src="{{ guest.3.image.url }}" alt="" />
+            </li>
+            <li class="guest-wrapper-images-single">
+              <img src="{{ guest.4.image.url }}" alt="" />
+            </li>
+            <li class="guest-wrapper-images-single">
+              <img src="{{ guest.5.image.url }}" alt="" />
+            </li>
+          </ul>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-xxl-5 col-lg-6 col-md-8">
+            <div class="tab-area">
+              <div class="single-guest tab-item center-text active">
+                <div class="single-guest-thumb">
+                  <img src="{{ guest.0.image.url }}" alt="" />
+                </div>
+                <div class="single-guest-contents mt-4">
+                  <p class="single-guest-contents-para">
+                    {{ guest.0.para }}
+                  </p>
+                  <h4 class="single-guest-contents-title mt-3">
+                    {{ guest.0.heading }}</h4>
+                </div>
+              </div>
+              <div class="single-guest tab-item center-text">
+                <div class="single-guest-thumb">
+                  <img src="{{ guest.1.image.url }}" alt="" />
+                </div>
+                <div class="single-guest-contents mt-4">
+                  <p class="single-guest-contents-para">
+                    {{ guest.1.para }}
+                  </p>
+                  <h4 class="single-guest-contents-title mt-3">
+                    {{ guest.1.heading }}</h4>
+                </div>
+              </div>
+              <div class="single-guest tab-item center-text">
+                <div class="single-guest-thumb">
+                  <img src="{{ guest.2.image.url }}" alt="" />
+                </div>
+                <div class="single-guest-contents mt-4">
+                  <p class="single-guest-contents-para">
+                    {{ guest.2.para }}
+                  </p>
+                  <h4 class="single-guest-contents-title mt-3">
+                    {{ guest.2.heading }}</h4>
+                </div>
+              </div>
+              <div class="single-guest tab-item center-text">
+                <div class="single-guest-thumb">
+                  <img src="{{ guest.3.image.url }}" alt="" />
+                </div>
+                <div class="single-guest-contents mt-4">
+                  <p class="single-guest-contents-para">
+                    {{ guest.3.para }}
+                  </p>
+                  <h4 class="single-guest-contents-title mt-3">
+                    {{ guest.3.heading }}</h4>
+                </div>
+              </div>
+              <div class="single-guest tab-item center-text">
+                <div class="single-guest-thumb">
+                  <img src="{{ guest.4.image.url }}" alt="" />
+                </div>
+                <div class="single-guest-contents mt-4">
+                  <p class="single-guest-contents-para">
+                    {{ guest.4.para }}
+                  </p>
+                  <h4 class="single-guest-contents-title mt-3">
+                    {{ guest.4.heading }}</h4>
+                </div>
+              </div>
+              <div class="single-guest tab-item center-text">
+                <div class="single-guest-thumb">
+                  <img src="{{ guest.5.image.url }}" alt="" />
+                </div>
+                <div class="single-guest-contents mt-4">
+                  <p class="single-guest-contents-para">
+                    {{ guest.5.para }}
+                  </p>
+                  <h4 class="single-guest-contents-title mt-3">
+                    {{ guest.5.heading }}r</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% else %}
+        <h4 class="text-center text-muted">No data available yet!</h4>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="shots-area pat-50 pab-50">
+  <div class="container">
+    <div class="section-title center-text">
+      <h2 class="title">Shots around our ToLetBD</h2>
+      <div class="section-title-shapes"></div>
+    </div>
+    <div class="imgLoaded mt-5">
+      <div class="row g-4 masonry-grid">
+        {% if short %}
+          <div class="col-lg-2 col-md-4 col-sm-6 grid-item">
+            <div class="single-shots bg-image" style="
+                background-image: url('{{ short.0.image.url }}');
+              ">
+              <a href="{{ short.0.image.url }}" class="single-shots-icon gallery-popup-two">
+                <i class="las la-image"></i>
+              </a>
+              <div class="single-shots-contents">
+                <h4 class="single-shots-contents-title">
+                  <a href=""> {{ short.0.heading }} </a>
+                </h4>
+                <p class="single-shots-contents-para">
+                  {{ short.0.para }}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-6 grid-item">
+            <div class="single-shots bg-image" style="
+                background-image: url('{{ short.1.image.url }}');
+              ">
+              <a href="{{ short.1.image.url }}" class="single-shots-icon gallery-popup-two">
+                <i class="las la-image"></i>
+              </a>
+              <div class="single-shots-contents">
+                <h4 class="single-shots-contents-title">
+                  <a href="javascript:void(0)"> {{ short.1.heading }} </a>
+                </h4>
+                <p class="single-shots-contents-para">
+                  {{ short.1.para }}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-6 grid-item">
+            <div class="single-shots bg-image" style="
+                background-image: url('{{ short.2.image.url }}');
+              ">
+              <a href="{{ short.2.image.url }}" class="single-shots-icon gallery-popup-two">
+                <i class="las la-image"></i>
+              </a>
+              <div class="single-shots-contents">
+                <h4 class="single-shots-contents-title">
+                  <a href="hotel_details.html"> {{ short.2.heading }} </a>
+                </h4>
+                <p class="single-shots-contents-para">
+                  {{ short.2.para }}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-4 col-sm-6 grid-item">
+            <div class="single-shots bg-image" style="
+                background-image: url('{{ short.3.image.url }}');
+              ">
+              <a href="{{ short.3.image.url }}" class="single-shots-icon gallery-popup-two">
+                <i class="las la-image"></i>
+              </a>
+              <div class="single-shots-contents">
+                <h4 class="single-shots-contents-title">
+                  <a href="hotel_details.html"> {{ short.3.heading}} </a>
+                </h4>
+                <p class="single-shots-contents-para">
+                  {{ short.3.para }}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-6 grid-item">
+            <div class="single-shots bg-image" style="
+                background-image: url('{{ short.4.image.url }}');
+              ">
+              <a href="{{ short.4.image.url }}" class="single-shots-icon gallery-popup-two">
+                <i class="las la-image"></i>
+              </a>
+              <div class="single-shots-contents">
+                <h4 class="single-shots-contents-title">
+                  <a href="hotel_details.html"> {{ short.4.heading }} </a>
+                </h4>
+                <p class="single-shots-contents-para">
+                  {{ short.4.para }}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-4 col-sm-6 grid-item">
+            <div class="single-shots bg-image" style="
+                background-image: url('{{ short.5.image.url }}');
+              ">
+              <a href="{{ short.5.image.url }}" class="single-shots-icon gallery-popup-two">
+                <i class="las la-image"></i>
+              </a>
+              <div class="single-shots-contents">
+                <h4 class="single-shots-contents-title">
+                  <a href="hotel_details.html"> {{ short.5.heading }} </a>
+                </h4>
+                <p class="single-shots-contents-para">
+                  {{ short.5.para }}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-6 grid-item">
+            <div class="single-shots bg-image" style="
+                background-image: url('{{ short.6.image.url }}');
+              ">
+              <a href="{{ short.6.image.url }}" class="single-shots-icon gallery-popup-two">
+                <i class="las la-image"></i>
+              </a>
+              <div class="single-shots-contents">
+                <h4 class="single-shots-contents-title">
+                  <a href="hotel_details.html"> {{ short.6.heading }} </a>
+                </h4>
+                <p class="single-shots-contents-para">
+                  {{ short.6.para }}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-4 col-sm-6 grid-item">
+            <div class="single-shots bg-image" style="
+                background-image: url('{{ short.7.image.url }}');
+              ">
+              <a href="{{ short.7.image.url }}" class="single-shots-icon gallery-popup-two">
+                <i class="las la-image"></i>
+              </a>
+              <div class="single-shots-contents">
+                <h4 class="single-shots-contents-title">
+                  <a href="hotel_details.html"> {{ short.7.heading }} </a>
+                </h4>
+                <p class="single-shots-contents-para">
+                  {{ short.7.para }}
+                </p>
+              </div>
+            </div>
+          </div>
+        {% else %}
+          <h4 class="text-center text-muted">No data available yet!</h4>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="question-area pat-50 pab-50">
+  <div class="container">
+    <div class="section-title center-text">
+      <h2 class="title">Frequently Asked Question</h2>
+      <div class="section-title-shapes"></div>
+    </div>
+    <div class="row g-4 mt-4">
+      <div class="col-xl-8 col-lg-7">
+        <div class="faq-wrapper">
+          <div class="faq-contents">
+            {% for f in ask %}
+              <div class="faq-item wow fadeInLeft" data-wow-delay=".1s">
+                <h3 class="faq-title">{{ f.heading }}</h3>
+                <div class="faq-panel">
+                  <p class="faq-para">
+                    {{ f.para }}
+                  </p>
+                </div>
+              </div>
+            {% empty %}
+              <h4 class="text-secondary">No data available now.</h4>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-4 col-lg-5">
+        <div class="faq-question faq-question-border radius-10 sticky-top">
+          <h3 class="faq-question-title">Still got questions?</h3>
+          <div class="faq-question-form custom-form mat-20">
+            <form action="" method="post">
+              {% csrf_token %}
+              <div class="single-input">
+                <label class="label-title"> Name </label>
+                <input type="text" class="form--control radius-10" placeholder="Type Name" name="fullname" />
+              </div>
+              <div class="single-input">
+                <label class="label-title"> Email </label>
+                <input type="email" class="form--control radius-10" placeholder="Type Email" name="email" />
+              </div>
+              <div class="single-input">
+                <label class="label-title"> Questions </label>
+                <textarea name="message" class="form--control form-message radius-10"
+                  placeholder="Type Your Questons..."></textarea>
+              </div>
+              <button class="submit-btn w-100 radius-10" type="submit">
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container mb-3">
+    <div class="row g-4">
+      {% for x in latest %}
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <a href="javascript:void(0)">
+            <div class="card h-100">
+              {% if x.latestnewsimage_set.all %}
+                <img src="{{ x.latestnewsimage_set.first.image.url }}" class="card-img-top" style="height: 200px;" alt="Property Image">
+              {% else %}
+                none
+              {% endif %}
+              <div class="card-body">
+                <h5 class="card-title"><span class="text-warning">{{ x.radiocheck }}</span></h5>
+                <h6 class="card-title">{{ x.property_title }}</h6>
+                <p class="card-text">
+                  {{ x.upazila }}, {{ x.district }}
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      {% empty %}
+        <h3>None</h3>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<div class="brand-area pat-50 pab-50">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="global-slick-init attraction-slider slider-inner-margin" data-slidesToShow="6" data-infinite="true"
+          data-arrows="false" data-dots="false" data-swipeToSlide="true" data-autoplay="true" data-autoplaySpeed="2500"
+          data-prevArrow='<div class="prev-icon"><i class="las la-angle-left"></i></div>'
+          data-nextArrow='<div class="next-icon"><i class="las la-angle-right"></i></div>'
+          data-responsive='[{"breakpoint": 1400,"settings": {"slidesToShow": 5}},{"breakpoint": 1200,"settings": {"slidesToShow": 4}},{"breakpoint": 992,"settings": {"slidesToShow": 3}},{"breakpoint": 576, "settings": {"slidesToShow": 2} }]'>
+          {% for h in sponsers %}
+            <div class="single-brand">
+              <a href="{{ h.brande_link }}" class="single-brand-thumb">
+                <img src="{{ h.image.url }}" alt="brandLogo" />
+              </a>
+            </div>
+          {% empty %}
+            <h4 class="text-center text-muted">No data available yet!</h4>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="newsletter-area pat-50">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="newsletter-wrapper newsletter-bg radius-20 newsletter-wrapper-padding wow zoomIn"
+          data-wow-delay=".3s">
+          <div class="newsletter-wrapper-shapes">
+            <img src="{% static 'assets/img/single-page/newsletter-shape1.png' %}" alt="shapes" />
+            <img src="{% static 'assets/img/single-page/newsletter-shape2.png' %}" alt="shapes" />
+          </div>
+          <div class="newsletter-contents center-text">
+            <h3 class="newsletter-contents-title">
+              Get discounts, newsletters in your email
+            </h3>
+            <p class="newsletter-contents-para mt-3">
+              Get discounts and newsletters on our hotels in your email. We
+              promise to not spam. Unsubscribe anytime
+            </p>
+            <div class="newsletter-contents-form custom-form mt-4">
+              <div class="single-input">
+                <form action="{% url 'newsletter' %}" method="post">
+                  {% csrf_token %}
+                  <input name="email" type="text" class="form--control" placeholder="Enter Email" />
+                  <button type="submit">Submit</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="back-to-top">
+  <span class="back-top"> <i class="las la-angle-up"></i> </span>
+</div>
+
+<div class="mouse-move mouse-outer"></div>
+<div class="mouse-move mouse-inner"></div>
+{% endblock content %}

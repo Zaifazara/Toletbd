@@ -1,0 +1,256 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+ToLetBD | Property-Details
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+{% endblock css %}
+
+{% block content %}
+
+{% if p %}
+<section class="l-area padding-top-100 padding-bottom-100 m-5">
+  <div class="container">
+    <div class="login-wrapper bg-white shadow rounded">
+      <div class="login-padding p-5">
+          <!--image section-->
+          <div class="container">
+            <div class="row slider">
+                {% if allimg %}
+                    {% for property_image in allimg %}
+                        {% if property_image.property_id == p.id %}
+                            <div class="card col-md-12" style="height: 250px;">
+                                <img src="{{ property_image.image.url }}" alt="Property Image" style="height: 100%;">
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                  <div class="card col-md-12" style="height: 250px;">
+                      {% if p.propertyimage_set.all %}
+                          <img src="{{ p.propertyimage_set.first.image.url }}" class="card-img-top" style="height: 100%;" alt="Property Image">
+                      {% else %}
+                          <img src="{{ p.image.url }}" class="card-img-top" style="height: 100%;" alt="No Image Available">
+                      {% endif %}
+                  </div>
+                {% endif %}
+            </div>
+        </div>
+          {% comment %} <div class="container">
+            <div class="row slider">
+              {% if allimg %}
+                {% for x in allimg %}
+                  <div class="card col-md-12" style="height: 250px;">
+                    <img src="{{ x.image.url }}" alt="Property Image">
+                  </div>
+                {% endfor %}
+              {% else %}
+                <div class="card col-md-12" style="height: 250px;">
+                  <img src="{{ p.image.url }}" class="card-img-top" style="height: 100%;" alt="...">
+                </div>
+              {% endif %}
+            </div>
+          </div> {% endcomment %}
+          <!--Basic Information-->
+          <h4 class="mt-5 mb-2"><b>Basic Information</b></h4>
+          <div class="border py-2 px-3">
+            <div class="row">
+              <div class="col-lg-4 col-md-6 col-sm-6 mt-4">
+                <div class="mb-2">
+                  <h6>Property Title</h6>
+                </div>
+                <p>{{ p.property_title }}</p>
+              </div>
+              <div class="col-lg-4 col-md-6 col-sm-6 mt-4">
+                <div class="mb-2">
+                  <h6>Property Flat</h6>
+                </div>
+                <p class="text-success">{{ p.radiocheck }}</p>
+              </div>
+              <div class="col-lg-4 col-md-6 col-sm-6 mt-4">
+                <h6 class="mb-2"> Floor Number</h6>
+                <p>{{ p.floor_number }}</p>
+              </div>
+              <div class="col-lg-4 col-md-6 col-sm-6 mt-4">
+                <h6 class="mb-2">Flat Size</h6>
+                <p>{{ p.flat_size }}</p>
+              </div>
+              <div class="col-lg-4 col-md-6 col-sm-6 mt-4">
+                <div class="d-flex flex-row mb-2 ">
+                  <h6 >Price</h6>
+                </div>
+                <p class="">{{ p.price }}</p>
+              </div>
+              <div class="col-lg-4 col-md-6 col-sm-6 mt-4">
+                <div class="d-flex flex-row mb-2 ">
+                  <h6>Total Service Charge</h6>
+                </div>
+                <p>{{ p.service_charge }}</p>
+              </div>
+            </div>
+          </div>
+          <!--Details Information-->
+          <h4 class="mt-5 mb-2"><b>Details Information</b></h4>
+          <div class="border py-2 px-3">
+            <div class="row">
+              <div class="col-lg-4 col-md-6 col-sm-6 mt-4">
+                <div class=" mb-2 ">
+                  <h6>Offer</h6>
+                </div>
+                <p>{{p.offer_for}}</p>
+              </div>
+              <div class="col-lg-4 col-md-6 col-sm-6 mt-4">
+                <div class=" mb-2 ">
+                  <h6>Building Age</h6>
+                </div>
+                <p>{{p.building_age}}</p>
+              </div>
+              <div class="col-lg-4 col-md-6 col-sm-6 mt-4">
+                <h6 class="mb-2">Property Type</h6>
+                <p>{{p.property_type}}</p>
+              </div>
+              <div class="col-lg-4 col-md-6 col-sm-6 mt-4">
+                <h6 class="mb-2">Bed Room</h6>
+                <p>{{p.bed}}</p>
+              </div>
+              <div class="col-lg-4 col-md-6 col-sm-6 mt-4">
+                <div class="d-flex flex-row mb-2 ">
+                  <h6 >Wash Room</h6>
+                </div>
+                <p>{{p.wash}}</p>
+              </div>
+              <div class="col-lg-4 col-md-6 col-sm-6 mt-4">
+                <div class="d-flex flex-row mb-2 ">
+                  <h6>Balcony</h6>
+                </div>
+                <p>{{p.balcony}}</p>
+              </div>
+              <div class="col-lg-4 col-md-6 col-sm-6 mt-4">
+                <div class="d-flex flex-row mb-2 ">
+                  <h6>Gas Type</h6>
+                </div>
+                <p>{{p.gas}}</p>
+              </div>
+              <div class="col-lg-4 col-md-6 col-sm-6 mt-4">
+                <div class="d-flex flex-row mb-2 ">
+                  <h6>Electricity Type</h6>
+                </div>
+              <p>{{p.electricity}}</p>
+              </div>
+            </div>
+          </div>
+          <!--Location-->
+          <h4 class="mt-5 mb-2"><b>Location</b></h4>
+          <div class="border py-2 px-3">
+            <div class="row">
+              <div class="col-lg-3 col-md-6 col-sm-6 mt-4">
+                <div class=" mb-2">
+                  <h6>Building Address</h6>
+                </div>
+                <p>{{p.address}}</p>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6 mt-4">
+                <div class=" mb-2 ">
+                  <h6>Upazila</h6>
+                </div>
+                <p>{{p.upazila}}</p>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6 mt-4">
+                <h6 class="mb-2">District</h6>
+                <p>{{p.district}}</p>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6 mt-4">
+                <div class="d-flex flex-row mb-2 ">
+                  <h6 >Division</h6>
+                </div>
+                <p class="">{{p.division}}</p>
+              </div>
+            </div> 
+          </div>
+
+          <!--Facilities-->
+        <h4 class="mt-5 mb-2"><b>Facilities </b></h4>
+        <div class="border py-2 px-3">
+          <div class="row">   
+            {% if p.security %}
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              Security
+            </div>
+            {% endif %}
+            {% if p.cctv %}
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              CCTV
+            </div>
+            {% endif %}
+            {% if p.lift %}
+            <div class="col-lg-4 col-md-6 col-sm-6 mt-4">
+              
+                  Lift
+    
+            </div>
+            {% endif %}
+            {% if p.parking %}
+            <div class="col-lg-4 col-md-6 col-sm-6 mt-4">
+          
+                  Parking
+            </div>
+            {% endif %}
+            {% if p.fire %}
+            <div class="col-lg-4 col-md-6 col-sm-6 mt-4">
+          
+                  Fire Extiction
+            </div>
+            {% endif %}
+            {% if p.generator %}
+            <div class="col-lg-4 col-md-6 col-sm-6 mt-4">
+          
+                  Generator
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        <h4 class="mt-5 mb-2"><b>Description</b></h4>
+        <div class="border py-2 px-3">
+         <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6 mt-4">
+             <p>{{p.desc}} </p>
+            </div>
+          </div>  
+       </div>
+        <!-- save & card btn -->
+        <div class="d-flex justify-content-evenly">
+            <div class="text-center d-">
+              <a href="/property-list/">
+                <button type="btn" class="btn-primary btn-lg py-2 w-100 rounded mt-4" value="Submit" >
+                    Back
+                </button>
+              </a>
+            </div>
+            <div class="text-center">
+                <button type="btn" class="btn-success btn-lg py-2 w-100 rounded mt-4" value="Submit" >
+                    Save
+                </button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% else %}
+<h3>No Data</h3>
+{% endif %}
+
+{% block js %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>	
+
+<script src="{% static 'assets/js/card_details.js' %}"></script>
+{% endblock js %}
+{% endblock content %}
+
+

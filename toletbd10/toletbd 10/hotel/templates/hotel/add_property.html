@@ -1,0 +1,399 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+ToLetBD | Add Property
+{% endblock title %}
+
+{% block content %}
+<form action="" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <section class="add_property">
+    <div class="container mb-5 text-center">
+      <div class="row">
+        <div class="col-md-12 my-5">
+          <h2>Choose <span class="text-warning">Property Type</span></h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 col-md-3 col-lg-2">
+          <div class="card text-center mb-3">
+            <div class="card-body ">
+              <div class="form-check pe-4">
+                <input class="form-check-input" type="radio" name="radiocheck" value="Family" id="FamilySame" hidden>
+                <label class="form-check-label" for="FamilySame">
+                  <i class="fa-solid fa-house-chimney fs-2 p-4 mb-3 border rounded-circle"></i>
+                  <h5 class="card-title">Family</h5>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+          <div class="card text-center mb-3">
+            <div class="card-body">
+              <div class="form-check pe-4">
+                <input class="form-check-input" type="radio" name="radiocheck" value="Sublet" id="SubletSame" hidden>
+                <label class="form-check-label" for="SubletSame">
+                  <i class="fa-solid fa-house-crack fs-2 p-4 mb-3 border rounded-circle"></i>
+                  <h5 class="card-title">Sublet</h5>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+          <div class="card text-center mb-3">
+            <div class="card-body">
+              <div class="form-check pe-4">
+                <input class="form-check-input" type="radio" name="radiocheck" value="Bachelor" id="BachelorSame" hidden>
+                <label class="form-check-label" for="BachelorSame">
+                  <i class="fa-solid fa-house-user fs-2 p-4 mb-3 border rounded-circle"></i>
+                  <h5 class="card-title">Bachelor</h5>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+          <div class="card text-center mb-3">
+            <div class="card-body">
+              <div class="form-check pe-4">
+                <input class="form-check-input" type="radio" name="radiocheck" value="Hostel" id="HostelSame" hidden>
+                <label class="form-check-label" for="HostelSame">
+                  <i class="fa-solid fa-hotel fs-2 p-4 mb-3 border rounded-circle"></i>
+                  <h5 class="card-title">Hostel</h5>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+          <div class="card text-center mb-3">
+            <div class="card-body">
+              <div class="form-check pe-4">
+                <input class="form-check-input" type="radio" name="radiocheck" value="Office" id="OfficeSame" hidden>
+                <label class="form-check-label" for="OfficeSame">
+                  <i class="fa-solid fa-building fs-2 p-4 mb-3 border rounded-circle"></i>
+                  <h5 class="card-title">Office</h5>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+          <div class="card text-center mb-3">
+            <div class="card-body">
+              <div class="form-check pe-4">
+                <input class="form-check-input" type="radio" name="radiocheck" value="Shop" id="ShopSame" hidden>
+                <label class="form-check-label" for="ShopSame">
+                  <i class="fa-solid fa-shop fs-2 p-4 mb-3 border rounded-circle"></i>
+                  <h5 class="card-title">Shop</h5>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="l-area padding-top-100 padding-bottom-100">
+    <div class="container">
+      <div class="login-wrapper bg-white shadow rounded">
+        <div class="login-padding p-5">
+          <h2 class="breadcrumb-contents-title fs-2 text-center"><span class="text-warning">Add Property</span></h2>
+          <hr>
+          <!-- Specified fields-->
+          <div class="container mt-2">
+            <!-- Family-->
+            <div id="Family" style="display: none;">
+              <h3>Family</h3>
+              <div class="row border-start border-secondary-subtle bg-light mt-3 pb-3">
+                <div class="col-md-6 mt-3">
+                  <label for="inputPresentAddress" class="form-label">Members</label>
+                  <input type="text" class="form-control" name="family_member" id="inputPresentAddress" placeholder="Members">
+                </div>
+              </div>
+            </div>
+            <!-- Sublet-->
+            <div id="Sublet" style="display: none;">
+              <h3>Sublet</h3>
+              <div class="row border-start border-secondary-subtle bg-light mt-3 pb-3">
+                <div class="col-md-6 mt-3">
+                  <label for="inputPresentAddress" class="form-label">Members</label>
+                  <input type="text" class="form-control" name="sublet_member" id="inputPresentAddress" placeholder="Apartment">
+                </div>
+              </div>
+            </div>
+            <!-- Bachelor-->
+            <div id="Bachelor" style="display: none;">
+              <h3>Bachelor</h3>
+              <div class="row border-start border-secondary-subtle bg-light mt-3 pb-3">
+                <div class="col-md-6 mt-3">
+                  <label for="inputPresentAddress" class="form-label">Seats</label>
+                  <input type="text" class="form-control" name="bachelor_seats" id="inputPresentAddress" placeholder="Apartment">
+                </div>
+              </div>
+            </div>
+            <!-- Hostet-->
+            <div id="Hostel" style="display: none;">
+              <h3>Hostel</h3>
+              <div class="row border-start border-secondary-subtle bg-light mt-3 pb-3">
+                <div class="col-md-6 mt-3">
+                  <label for="inputPresentAddress" class="form-label">Seats</label>
+                  <input type="text" class="form-control" name="hostel_seats" id="inputPresentAddress" placeholder="Apartment">
+                </div>
+                <div class="col-md-6 mt-3">
+                  <label for="inputPresentAddress" class="form-label">Quality</label>
+                  <input type="text" class="form-control" id="inputPresentAddress" name="hostel_quality" placeholder="Apartment">
+                </div>
+              </div>
+            </div>
+            <!-- Office-->
+            <div id="Office" style="display: none;">
+              <h3>Office</h3>
+              <div class="row border-start border-secondary-subtle bg-light mt-3 pb-3">
+                <div class="col-md-6 mt-3">
+                  <label for="inputPresentAddress" class="form-label">Seats</label>
+                  <input type="text" class="form-control" name="office_seats" id="inputPresentAddress" placeholder="Apartment">
+                </div>
+                <div class="col-md-12 mt-3">
+                  <label for="formFile" class="form-label">Floor Plan</label>
+                  <input class="form-control object-fit-contain border-secondary-subtle rounded h" name="hostel_plan" type="file" id="formFile" multiple>
+                </div>
+              </div>
+            </div>
+            <!-- Shop-->
+            <div id="Shop" style="display: none;">
+              <h3>Shop</h3>
+              <div class="row border-start border-secondary-subtle bg-light mt-3 pb-3">
+                <div class="col-md-6 mt-3">
+                  <label for="inputPresentAddress" class="form-label">Quality</label>
+                  <input type="text" class="form-control" id="inputPresentAddress" name="shop_quality" placeholder="Apartment">
+                </div>
+                <div class="col-md-12 mt-3">
+                  <label for="formFile" class="form-label">Floor Plan</label>
+                  <input class="form-control object-fit-contain border-secondary-subtle rounded h" name="hostel_plan" type="file" id="formFile" multiple>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Common Fields -->
+          <div class="container mt-2">
+            <h3 class="mt-4">Informations</h3>
+            <div class="row border-start border-secondary-subtle bg-light mt-3 pb-3">
+              <div class="col-md-6 mt-3">
+                  <label for="inputPermanent" class="form-label">Property Title<span class="text-danger fw-bold">*</span></label>
+                  <input type="text" class="form-control" name="property_title" id="inputPermanent" placeholder="Demo Villa">
+              </div>
+              <div class="col-md-6 mt-3">
+                  <label for="inputPermanent" class="form-label">Floor Number<span class="text-danger fw-bold">*</span></label>
+                  <input type="number" class="form-control" name="floor_number" id="inputPermanent">
+              </div>
+              <div class="col-md-6 mt-3">
+                  <label for="inputPermanent" class="form-label">Flat Size<span class="text-danger fw-bold">*</span></label>
+                  <input type="text" class="form-control" name="flat_size" placeholder="Type sqf" id="inputPermanent">
+              </div>
+              <div class="col-md-6 mt-3">
+                  <label for="inputPermanent" class="form-label">Price<span class="text-danger fw-bold">*</span></label>
+                  <input type="number" class="form-control" name="price" id="inputPermanent">
+              </div>
+              <div class="col-md-6 mt-3">
+                  <label for="inputPermanent" class="form-label">Service Charge<span class="text-danger fw-bold">*</span></label>
+                  <input type="number" class="form-control" name="service_charge" id="inputPermanent">
+              </div>
+              <div class="col-md-6 mt-3">
+                <label for="inputPermanent" class="form-label">Offer<span class="text-danger fw-bold">*</span></label>
+                <select id="inputPermanent" class="form-select" name="offer_for">
+                    <option selected>-- Choose --</option>
+                    <option value="Rent">Rent</option>
+                    <option value="Sale">Sale</option>
+                </select>
+              </div>
+              <div class="col-md-6 mt-3">
+                <label for="inputPermanent" class="form-label">Property Type<span class="text-danger fw-bold">*</span></label>
+                <select id="inputPermanent" class="form-select" name="property_type">
+                  <option selected>-- Choose --</option>
+                  <option value="Owner">Owner</option>
+                  <option value="Apartment">Apartment</option>
+                </select>
+              </div>
+              <div class="col-md-6 mt-3">
+                <label for="inputPermanent" class="form-label">Builing Age<span class="text-danger fw-bold">*</span></label>
+                <select id="inputPermanent" class="form-select" name="building_age">
+                  <option selected>-- Choose --</option>
+                  <option value="0 to 10">0 to 10</option>
+                  <option value="11 to 20">11 to 20</option>
+                  <option value="20 up">20 up</option>
+                </select>
+              </div>
+              <div class="col-md-6 mt-3">
+                <label for="inputPermanent" class="form-label">Bed<span class="text-danger fw-bold">*</span></label>
+                <select id="inputPermanent" class="form-select" name="bed">
+                  <option selected>-- Choose --</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              <div class="col-md-6 mt-3">
+                <label for="inputPermanent" class="form-label">Wash<span class="text-danger fw-bold">*</span></label>
+                <select id="inputPermanent" class="form-select" name="wash">
+                  <option selected>-- Choose --</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              <div class="col-md-6 mt-3">
+                <label for="inputPermanent" class="form-label">Balcony</label>
+                <select id="inputPermanent" class="form-select" name="balcony">
+                  <option selected>-- Choose --</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+              </div>
+              <div class="col-md-6 mt-3">
+                <label for="inputPermanent" class="form-label">Gas<span class="text-danger fw-bold">*</span></label>
+                <select id="inputPermanent" class="form-select" name="gas">
+                  <option selected>-- Choose --</option>
+                  <option value="LPG">LPG</option>
+                  <option value="Supply Gas">Supply Gas</option>
+                </select>
+              </div>
+              <div class="col-md-6 mt-3">
+                <label for="inputPermanent" class="form-label">Electricity<span class="text-danger fw-bold">*</span></label>
+                <select id="inputPermanent" class="form-select" name="electricity">
+                  <option selected>-- Choose --</option>
+                  <option value="Prepaid">Prepaid</option>
+                  <option value="Postpaid">Postpaid</option>
+                </select>
+              </div>
+            </div>
+
+            <h3 class="mt-4">Facilities</h3>
+            <div class="col-12 border-start border-secondary-subtle bg-light mt-3 pb-3">
+              <div class="row">
+                <div class="col-md-6 col-sm-6">
+                  <div class="single-input mt-2">
+                    <div class="checkbox-inline mt-2">
+                      <input class="check-input rounded border border-secondary-subtle" name="security" type="checkbox" id="check" />
+                      <label class="checkbox-label" for="check" id="boxb">
+                        Security
+                      </label>
+                    </div>
+                  </div>
+                  <div class="single-input mt-2">
+                    <div class="checkbox-inline mt-2">
+                      <input class="check-input rounded border border-secondary-subtle" name="cctv" type="checkbox" id="check1" />
+                      <label class="checkbox-label" for="check1" id="boxb">
+                        CCTV
+                      </label>
+                    </div>
+                  </div>
+                  <div class="single-input mt-2">
+                    <div class="checkbox-inline mt-2">
+                      <input class="check-input rounded border border-secondary-subtle" name="lift" type="checkbox" id="check2" />
+                      <label class="checkbox-label" for="check2" id="boxb">
+                        Lift
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                  <div class="single-input mt-2">
+                    <div class="checkbox-inline mt-2">
+                      <input class="check-input rounded border border-secondary-subtle" name="parking" type="checkbox" id="check3" />
+                      <label class="checkbox-label" for="check3" id="boxb">
+                        Parking
+                      </label>
+                    </div>
+                  </div>
+                  <div class="single-input mt-2">
+                    <div class="checkbox-inline mt-2">
+                      <input class="check-input rounded border border-secondary-subtle" name="fire" type="checkbox" id="check4" />
+                      <label class="checkbox-label" for="check4" id="boxb">
+                        Fire Extintion
+                      </label>
+                    </div>
+                  </div>
+                  <div class="single-input mt-2">
+                    <div class="checkbox-inline mt-2">
+                      <input class="check-input rounded border border-secondary-subtle" name="generator" type="checkbox" id="check5" />
+                      <label class="checkbox-label" for="check5" id="boxb">
+                        Generator
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h3 class="mt-4">Location</h3>
+            <div class="row border-start border-secondary-subtle bg-light mt-3 pb-3">
+              <div class="col-md-6 mt-3">
+                <label for="country">Division<span class="text-danger fw-bold">*</span></label>
+                <select class="form-select border-secondary-subtle rounded py-2" name="division" aria-label="Default select example" id="country" onchange="countryfield()">
+                    <option selected>Choose Division</option>
+                    {% for x in divisions %}
+                        <option value="{{x.id}}" {% if request.GET.country == x.id|lower %}selected{% endif %}>{{x.name}}</option>
+                    {% endfor %}
+                </select>
+              </div>
+              <div class="col-md-6 mt-3">
+                <label for="state">District<span class="text-danger fw-bold">*</span></label>
+                <select class="form-select border-secondary-subtle rounded py-2" name="district" aria-label="Default select example" id="state" onchange="statefield()">
+                    <option selected>Choose District</option>
+                </select>
+              </div>
+              <div class="col-md-6 mt-3">
+                <label for="district">Upazila / Thana<span class="text-danger fw-bold">*</span></label>
+                <select class="form-select border-secondary-subtle rounded py-2" name="upazila" aria-label="Default select example" id="district">
+                    <option selected>Choose Upazila</option>
+                </select>
+              </div>
+              <div class="col-md-6 mt-3">
+                <label for="" class="">Address<span class="text-danger fw-bold">*</span></label>
+                <input class="form-control border-secondary-subtle rounded py-2" name="address" type="text" placeholder="Type your address"
+                aria-label="default input example">
+              </div>
+            </div>
+
+            <h3 class="mt-4">Uploads</h3>
+            <div class="row">
+              <div class="col-md-12 border-start border-secondary-subtle bg-light pb-3 mt-3">
+                <label for="formFile" class="form-label">Flat Pictures Upload</label>
+                <input class="form-control object-fit-contain border-secondary-subtle rounded h" name="image" type="file" id="formFile" multiple>
+              </div>
+              <div class="col-12 mt-3">
+                <div class="single-input mt-3">
+                  <label for="desc">Description<span class="text-danger fw-bold">*</span></label>
+                  <textarea class="form-control border-secondary rounded fs-5 text-dark" name="desc" id="" cols="30" rows="5" placeholder="Type something about this property....."></textarea>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div class="col-12 d-flex justify-content-center">
+              <button type="submit" class="btn btn-primary w-50 py-2">Post</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</form>
+{% endblock content %}
+
+
+{% block script %}
+{% endblock script %}

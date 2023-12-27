@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+ToLetBD | Sign In Page
+{% endblock title %} 
+
+{% block content %}
+<section class="login-area bg-light py-5">
+  <div class="container py-3">
+    <div class="login-wrapper">
+      <div class="login-wrapper-flex">
+        <div class="login-wrapper-contents shadow rounded bg-white login-padding">
+          <h2 class="single-title">Welcome!</h2>
+          <p class="sigle-para mt-2">Login to Continue</p>
+          <form class="login-wrapper-contents-form custom-form" action="" method="post">
+            {% csrf_token %}
+            <div class="single-input mt-4">
+              <label class="label-title mb-2"> Email Address </label>
+              <input class="form--control border-dark rounded" type="email" name="email" placeholder="Email Address" />
+            </div>
+            <div class="single-input mt-4">
+              <label class="label-title mb-2"> Password </label>
+              <input class="form--control border-dark rounded" type="password" name="password"
+                placeholder="Type Password" />
+              <div class="icon toggle-password">
+                <div class="show-icon">
+                  <i class="las la-eye-slash"></i>
+                </div>
+                <span class="hide-icon"> <i class="las la-eye"></i> </span>
+              </div>
+            </div>
+            <button class="submit-btn w-100 mt-4 rounded" type="submit">
+              Log In
+            </button>
+          </form>
+          <div class="single-checkbox mt-3">
+            <span class="account color-light">
+              Don't have an account?
+              <a class="color-one" href="{% url 'signup' %}"> SignUp Now </a>
+            </span>
+            <div class="forgot-password">
+              <a href="{% url 'password_reset' %}" class="forgot-btn color-one">
+                Forgot Password?
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

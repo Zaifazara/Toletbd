@@ -1,0 +1,60 @@
+{% load static %}
+<header class="header-style-01">
+  <nav class="navbar navbar-area navbar-border navbar-expand-lg">
+    <div class="container custom-container-one nav-container">
+      <div class="logo-wrapper d-flex align-items-center">
+        <a href="/" class="logo">
+        <img src="{% static 'assets/img/banner/logo.png' %}" style="height: 100px; width: 110px;" alt="" srcset="">
+        </a>
+        <a href="/" class="logo">
+          <h3>ToLetBD</h3>
+        </a>
+      </div>
+      <div class="responsive-mobile-menu d-lg-none">
+        <a href="javascript:void(0)" class="click-nav-right-icon">
+          <i class="las la-ellipsis-v"></i>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#hotel_booking_menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="hotel_booking_menu">
+        <ul class="navbar-nav">
+          <li><a href="/" class="p-0 mx-3 pb-1">Home</a></li>
+          <li><a href="{% url 'property-list' %}" class="p-0 mx-3 pb-1">Property List</a></li>
+          <li><a href="{% url 'about' %}" class="p-0 mx-3 pb-1">About</a></li>
+          <li><a href="{% url 'contact' %}" class="p-0 mx-3 pb-1"> Contact Us </a></li>
+        </ul>
+      </div>
+      <div class="navbar-right-content show-nav-content">
+        <div class="single-right-content">
+          <div class="navbar-right-flex">
+            <div class="btn-wrapper" id="addpro">
+              <a href="{% url 'add-property' %}" class="btn btn-outline-dark">
+                Add Property <i class="fa-solid fa-plus ms-1 p-1"></i>
+              </a>
+            </div>
+            <div class="btn-wrapper">
+              {% if not request.user.is_authenticated %}
+              <a href="{% url 'signin' %}" class="btn btn-outline-success"> Log In </a>
+              <a href="{% url 'signup' %}" class="btn btn-outline-primary">Sign Up</a>
+              {% else %}
+              <a href="/user-dashboard/" class="text-dark fs-5 p-0 m-0">
+                {% if request.user.profile.first_name %}
+                  <span class="mb-0">
+                    {{ request.user.profile.first_name }} {{ request.user.profile.last_name }}
+                  </span>
+                  <i class="fa-solid fa-circle-user fs-3 ms-1"></i>
+                {% else %}
+                  <span class="mb-0">Profile</span>
+                  <i class="fa-solid fa-circle-user fs-3 ms-1"></i>
+                {% endif %}
+              </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

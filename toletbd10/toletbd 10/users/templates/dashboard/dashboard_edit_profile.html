@@ -1,0 +1,142 @@
+{% extends 'dashboard/dashboard_base.html' %}
+{% load static %}
+
+{% block title %}
+ToLetBD | Edit Profile
+{% endblock title %} 
+
+{% block dpm %}
+active open show
+{% endblock dpm %}
+
+{% block dep %}
+selected
+{% endblock dep %}
+
+
+{% block dhead %}
+<div class="breadcrumb-area breadcrumb-padding">
+  <div class="container custom-container-one">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="breadcrumb-contents">
+          <h4 class="breadcrumb-contents-title">Edit Profile</h4>
+          <ul class="breadcrumb-contents-list list-style-none">
+            <li class="breadcrumb-contents-list-item">
+              <a href="/" class="breadcrumb-contents-list-item-link"> Home </a>
+            </li>
+            <li class="breadcrumb-contents-list-item">
+              <a href="/user-dashboard/user-profile/" class="breadcrumb-contents-list-item-link">
+                Profile
+              </a>
+            </li>
+            <li class="breadcrumb-contents-list-item">Edit Profile</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock dhead %}
+
+
+{% block dcontent %}
+<div class="dashboard-right-contents mt-4 mt-lg-0">
+  <div class="dashboard-reservation">
+    <div class="single-reservation bg-white base-padding">
+      <h3 class="single-reservation-title">Edit Profile</h3>
+      <div class="custom--form dashboard-form">
+        <form action="" enctype="multipart/form-data" method="post">
+          {% csrf_token %}
+          <div class="dashboard-flex-input">
+            <div class="dashboard-input mt-4">
+              <label class="label-title"> First Name </label>
+              <input type="text" class="form--control" name="first_name" value="{{ form.instance.first_name }}" placeholder="First Name" required />
+            </div>
+            <div class="dashboard-input mt-4">
+              <label class="label-title"> Last Name </label>
+              <input type="text" class="form--control" name="last_name" value="{{ form.instance.last_name }}" placeholder="Last Name" required />
+            </div>
+          </div>
+          <div class="dashboard-flex-input">
+            <div class="dashboard-input mt-4">
+              <label class="label-title"> NID Card Number </label>
+              <input type="number" class="form--control" name="nid" value="{{ form.instance.nid }}" placeholder="Enter NID number" required />
+            </div>
+            <div class="dashboard-input mt-4">
+              <label class="label-title"> Phone Number </label>
+              <input type="text" class="form--control" name="phone" id="phone" value="{{ form.instance.phone }}" placeholder="Phone Number" />
+            </div>
+          </div>
+          <div class="dashboard-flex-input flex-input-3">
+            <div class="dashboard-input mt-4">
+              <label for="country">Division</label>
+              <select class="form-select border-secondary-subtle rounded py-2" name="division" aria-label="Default select example" id="country" onchange="countryfield()">
+                  <option selected>Choose Division</option>
+                  {% for x in divisions %}
+                      <option value="{{x.id}}" {% if request.GET.country == x.id|lower %}selected{% endif %}>{{x.name}}</option>
+                  {% endfor %}
+              </select>
+            </div>
+            <div class="dashboard-input mt-4">
+              <label for="state">District</label>
+              <select class="form-select border-secondary-subtle rounded py-2" name="district" aria-label="Default select example" id="state" onchange="statefield()">
+                  <option selected>Choose District</option>
+              </select>
+            </div>
+            <div class="dashboard-input mt-4">
+              <label for="district">Upazila / Thana</label>
+              <select class="form-select border-secondary-subtle rounded py-2" name="upazila" aria-label="Default select example" id="district">
+                  <option selected>Choose Upazila</option>
+              </select>
+            </div>
+          </div>        
+          <div class="dashboard-input mt-4">
+            <label class="label-title"> Address </label>
+            <input type="text" class="form--control" name="address" value="{{ form.instance.address }}" placeholder="Address" />
+          </div>
+          <div class="btn-wrapper mt-4">
+            <button type="submit" class="cmn-btn btn-bg-1">
+              Save Changes
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="popup-overlay"></div>
+<div class="popup-fixed">
+  <div class="popup-contents popup-cancell-modal">
+    <h2 class="popup-contents-title">Why do you want to cancel?</h2>
+    <div class="popup-contents-select">
+      <label class="popup-contents-select-label"> Choose a reason </label>
+      <div class="js-select">
+        <select>
+          <option value="1">Don't want to Book</option>
+          <option value="2">Booked Accidentally</option>
+          <option value="3">Don't want to Book</option>
+        </select>
+      </div>
+    </div>
+    <div class="popup-contents-btn flex-btn">
+      <a href="javascript:void(0)" class="dash-btn popup-close">
+        <i class="las la-arrow-left"></i> Go Back
+      </a>
+      <a href="javascript:void(0)" class="dash-btn btn-cancelled popup-close">
+        Cancel
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="mouse-move mouse-outer"></div>
+<div class="mouse-move mouse-inner"></div>
+{% endblock dcontent %}
+{% block addproperty %}
+<script src="{% static 'assets/js/add_property.js' %}"></script>
+{% endblock addproperty %}

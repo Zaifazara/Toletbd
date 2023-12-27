@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>{% block title %}{% endblock title %}</title>
+    <!-- css files -->
+    <link rel="icon" href="favicon.png" sizes="16x16" type="icon/png" />
+
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'assets/css/line-awesome.min.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'assets/css/flatpicker.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'assets/css/intlTelInput.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+    <link rel="stylesheet" href="{% static 'assets/css/header.css' %}"> 
+
+    {% block css %}
+    {% endblock css %}
+
+</head>
+<body>
+
+
+    <!-- header section start -->
+    {% include 'include/header.html' %}
+    <!-- header section end -->
+
+
+    <!-- main section start -->
+
+    {% block content %}
+
+    {% endblock content %}
+
+    <!-- main section end -->
+
+
+    <!-- footer section start -->
+    {% include 'include/footer.html' %}
+    <!-- footer section end -->
+
+
+    <script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+
+    <script src="{% static 'assets/js/jquery-3.6.0.min.js' %}"></script>
+
+    <script src="{% static 'assets/js/jquery-migrate.min.js' %}"></script>
+
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+    <script src="{% static 'assets/js/wow.js' %}"></script>
+
+    <script src="{% static 'assets/js/slick.js' %}"></script>
+
+    <script src="{% static 'assets/js/imagesloaded.pkgd.min.js' %}"></script>
+
+    <script src="{% static 'assets/js/isotope.pkgd.min.js' %}"></script>
+
+    <script src="{% static 'assets/js/jquery.magnific-popup.js' %}"></script>
+
+    <script src="{% static 'assets/js/jquery.nice-select.js' %}"></script>
+
+    <script src="{% static 'assets/js/flatpicker.js' %}"></script>
+
+    <script src="{% static 'assets/js/nouislider-8.5.1.min.js' %}"></script>
+
+    <script src="{% static 'assets/js/intlTelInput.js' %}"></script>
+
+    <script src="{% static 'assets/js/main.js' %}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="{% static 'assets/js/add_property.js' %}"></script>
+
+    <script type="text/javascript">
+        {% if messages %}
+        {% for message in messages %}
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: '{{ message.tags }}',
+            title: '{{ message }}'
+        })
+        {% endfor %}
+        {% endif %}
+    </script>
+
+    {% block script %}
+    {% endblock script %}
+</body>
+</html>
